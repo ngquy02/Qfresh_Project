@@ -1,0 +1,113 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%23ccc'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <h1 class="text-center text-white display-6">Đăng nhập</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Trang chủ</a></li>
+        <li class="breadcrumb-item active text-white">Đăng nhập</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+<!-- Login Start -->
+<div class="container-fluid contact py-5">
+    <div class="container py-5">
+        <div class="row" style="justify-content: center;">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="p-5 bg-light rounded">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="text-center mx-auto" style="max-width: 700px;">
+                                <h1 class="text-primary">Đăng nhập</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section>
+                                <form id="account" method="post">
+                                    <hr />
+                                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                                        <label asp-for="Input.Email" class="form-label">Email</label>
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                                        <label asp-for="Input.Password" class="form-label">Mật khẩu</label>
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="checkbox mb-3">
+                                        <label asp-for="Input.RememberMe" class="form-label">
+                                            <input type="checkbox" class="form-check-input form-check-input bg-primary border-0" asp-for="Input.RememberMe" />
+                                            Nhớ mật khẩu?
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <button id="login-submit" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4" type="submit" style="width: 100%;">Đăng nhập</button>
+                                    </div>
+                                    <div style="padding-bottom: 20px;">
+                                        <p>
+                                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Quên mật khẩu?</a>
+                                        </p>
+                                        <p>
+                                            <a href="#">Đăng kí tài khoản</a>
+                                        </p>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section>
+                                <h4 style="text-align: center;">hoặc</h4>
+                                <hr />
+                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                    <div class="row" style="justify-content: center;">
+                                        <div class="col-lg-8 col-md-8 col-sm-12">
+                                            <p>
+                                                <button type="submit" class="gsi-material-button" name="provider" value="Google" title="Đăng nhập sử dụng tài khoản Google cùa bạn">
+                                                    <div class="gsi-material-button-state"></div>
+                                                    <div class="gsi-material-button-content-wrapper">
+                                                        <div class="gsi-material-button-icon"><i class="fab fa-google"></i></div>
+                                                        <span class="gsi-material-button-contents">Đăng nhập bằng Google</span>
+                                                        <span style="display: none;">Đăng nhập bằng Google</span>
+                                                    </div>
+                                                </button>
+                                            </p>
+                                            <p>
+                                                <button type="submit" class="gsi-material-button" name="provider" value="Facebook" title="Đăng nhập sử dụng tài khoản Facebook cùa bạn">
+                                                    <div class="gsi-material-button-state"></div>
+                                                    <div class="gsi-material-button-content-wrapper">
+                                                        <div class="gsi-material-button-icon">
+                                                            <i class="fab fa-facebook"></i>
+                                                        </div>
+                                                        <span class="gsi-material-button-contents">Đăng nhập bằng Facebook</span>
+                                                        <span style="display: none;">Đăng nhập bằng Facebook</span>
+                                                    </div>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login End -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
